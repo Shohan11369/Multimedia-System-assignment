@@ -39,7 +39,7 @@ function Navbar() {
         {/* Mobile Hamburger Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="text-black text-2xl md:hidden ml-auto"
+          className="!text-black text-2xl md:hidden ml-auto"
         >
           {isMobileMenuOpen ? <FiX /> : <FiMenu />}
         </button>
