@@ -13,6 +13,13 @@ import Food from "./Pages/nutrition/Food";
 import Game from "./Pages/nutrition/Game";
 import Video from "./Pages/nutrition/Video";
 import FoodDetails from "./Pages/FoodDetails";
+
+// নতুন চারটা পেজ
+import VegetablesPage from "./Pages/VegetablesPage";
+import FruitsPage from "./Pages/FruitsPage";
+import ProteinPage from "./Pages/ProteinPage";
+import DairyPage from "./Pages/CarboPage";
+
 function App() {
   return (
     <Router>
@@ -29,6 +36,12 @@ function App() {
         <Route path="/nutrition/game" element={<Game />} />
         <Route path="/nutrition/video" element={<Video />} />
         <Route path="/nutrition/food/:id" element={<FoodDetails />} />
+
+        {/* নতুন রাউট */}
+        <Route path="/vegetables" element={<VegetablesPage />} />
+        <Route path="/fruits" element={<FruitsPage />} />
+        <Route path="/protein" element={<ProteinPage />} />
+        <Route path="/dairy" element={<DairyPage />} />
       </Routes>
       <Footer />
     </Router>

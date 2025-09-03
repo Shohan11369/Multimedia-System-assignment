@@ -48,21 +48,16 @@ function Navbar() {
         <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 space-x-8 items-center">
           <Link
             to="/"
-            className="bg-[#9ad9db] py-2 px-3 rounded-full text-black font-semibold hover:bg-blue-600 hover:text-white"
+            className="bg-[#cae0e1] py-2 px-3 rounded-full text-black font-semibold hover:bg-blue-600 hover:text-white"
           >
             Home
           </Link>
-          <Link
-            to="/about"
-            className="bg-[#9ad9db] py-2 px-3 rounded-full text-black font-semibold hover:bg-blue-600 hover:text-white"
-          >
-            About Us
-          </Link>
+          
 
           <div className="relative" ref={nutritionRef}>
             <button
               onClick={handleNutritionClick}
-              className="bg-[#9ad9db] py-2 px-3 rounded-full text-black font-semibold hover:bg-blue-600 hover:text-white focus:outline-none"
+              className="bg-[#cae0e1] py-2 px-3 rounded-full text-black font-semibold hover:bg-blue-600 hover:text-white focus:outline-none"
             >
               Nutrition
             </button>
@@ -89,10 +84,17 @@ function Navbar() {
               </div>
             )}
           </div>
+          
+          <Link
+            to="/about"
+            className="bg-[#cae0e1] py-2 px-3 rounded-full text-black font-semibold hover:bg-blue-600 hover:text-white"
+          >
+            About Us
+          </Link>
 
           <Link
             to="/contact"
-            className="bg-[#9ad9db] py-2 px-3 rounded-full text-black font-semibold hover:bg-blue-600 hover:text-white"
+            className="bg-[#cae0e1] py-2 px-3 rounded-full text-black font-semibold hover:bg-blue-600 hover:text-white"
           >
             Contact
           </Link>
@@ -102,13 +104,13 @@ function Navbar() {
         <div className="hidden md:flex absolute right-4 space-x-2">
           <Link
             to="/login"
-            className="bg-[#9ad9db] px-4 py-2 rounded-full text-black font-semibold hover:bg-blue-600 hover:text-white transition"
+            className="bg-[#cae0e1] px-4 py-2 rounded-full text-black font-semibold hover:bg-blue-600 hover:text-white transition"
           >
             Login
           </Link>
           <Link
             to="/signup"
-            className="bg-[#9ad9db] px-4 py-2 rounded-full text-black font-semibold hover:bg-blue-600 hover:text-white transition"
+            className="bg-[#cae0e1] px-4 py-2 rounded-full text-black font-semibold hover:bg-blue-600 hover:text-white transition"
           >
             Sign Up
           </Link>

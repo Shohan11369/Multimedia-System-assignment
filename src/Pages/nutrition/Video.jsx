@@ -15,7 +15,7 @@ function Video() {
         <div className="grid md:grid-cols-3 gap-6">
           {/* Video 1 */}
           <div className="bg-white rounded-xl shadow-md p-6 w-full">
-            <h2 className="font-semibold text-xl mb-6">
+            <h2 className="font-semibold text-2xl mb-6">
               🍎 What is Healthy Food?
             </h2>
             <div className="relative pb-[56.25%] h-0 rounded-lg overflow-hidden">
@@ -33,7 +33,7 @@ function Video() {
 
           {/* Video 2 */}
           <div className="bg-white rounded-xl shadow-md p-4 w-full">
-            <h2 className="font-semibold text-lg mb-4">
+            <h2 className="font-semibold text-2xl mb-4">
               🥦 Benefits of Local Foods
             </h2>
             <div className="relative pb-[56.25%] h-0 rounded-lg overflow-hidden">
@@ -51,7 +51,7 @@ function Video() {
 
           {/* Video 3 */}
           <div className="bg-white rounded-xl shadow-md p-4 w-full">
-            <h2 className="font-semibold text-lg mb-4">
+            <h2 className="font-semibold text-2xl mb-4">
               🚫 Avoiding Junk Food
             </h2>
             <div className="relative pb-[56.25%] h-0 rounded-lg overflow-hidden">
@@ -74,14 +74,14 @@ function Video() {
         <h2 className="text-2xl font-semibold text-yellow-700 mb-2">
           📝 Check Your Knowledge
         </h2>
-        <p className="text-gray-800 mb-4">
+        <p className="text-gray-800 text-xl mb-4">
           After watching the videos and playing the game, if you want to check
           your knowledge, you need to <strong>Sign Up</strong> or{" "}
           <strong>Log In</strong>. Then you can take a short exam / quiz to test
           what you've learned.
         </p>
 
-        <p className="text-sm text-gray-600 mt-3">
+        <p className="text-lg text-gray-600 mt-3">
           (Note: Quiz access may require an account — implement auth flow so
           only logged-in users can start the exam.)
         </p>
@@ -96,10 +96,10 @@ function Video() {
         <div className="grid md:grid-cols-2 gap-6">
           {/* Tip 1 */}
           <div className="bg-green-50 p-6 rounded-xl shadow-md border border-green-200">
-            <h2 className="text-xl font-semibold text-blue-700 mb-2">
+            <h2 className="text-2xl font-semibold text-blue-700 mb-2">
               🍽 Daily Eating Habits
             </h2>
-            <ul className="list-disc pl-5 space-y-1 text-gray-800">
+            <ul className="list-disc pl-5 text-xl space-y-1 text-gray-800">
               <li>Offer a variety of colorful fruits and vegetables daily.</li>
               <li>
                 Serve balanced meals that include protein, healthy fats, and
@@ -116,10 +116,10 @@ function Video() {
 
           {/* Tip 2 */}
           <div className="bg-green-50 p-6 rounded-xl shadow-md border border-green-200">
-            <h2 className="text-xl font-semibold text-orange-700 mb-2">
+            <h2 className="text-2xl font-semibold text-orange-700 mb-2">
               🛒 Shopping & Cooking
             </h2>
-            <ul className="list-disc pl-5 space-y-1 text-gray-800">
+            <ul className="list-disc pl-5 text-xl space-y-1 text-gray-800">
               <li>
                 Involve kids in grocery shopping and teach them to read
                 nutrition labels.
@@ -141,10 +141,10 @@ function Video() {
 
           {/* Tip 3 */}
           <div className="bg-green-50 p-6 rounded-xl shadow-md border border-green-200">
-            <h2 className="text-xl font-semibold text-lime-600 mb-2">
+            <h2 className="text-2xl font-semibold text-lime-600 mb-2">
               📱 Limiting Junk Food & Screen Time
             </h2>
-            <ul className="list-disc pl-5 space-y-1 text-gray-800">
+            <ul className="list-disc pl-5 text-xl space-y-1 text-gray-800">
               <li>
                 Limit fast food and processed snacks to occasional treats.
               </li>
@@ -162,10 +162,10 @@ function Video() {
 
           {/* Tip 4 */}
           <div className="bg-green-50 p-6 rounded-xl shadow-md border border-green-200">
-            <h2 className="text-xl font-semibold text-pink-500 mb-2">
+            <h2 className="text-2xl font-semibold text-pink-500 mb-2">
               ❤️ Creating a Healthy Mindset
             </h2>
-            <ul className="list-disc pl-5 space-y-1 text-gray-800">
+            <ul className="list-disc pl-5 text-xl space-y-1 text-gray-800">
               <li>
                 Be a role model—eat healthy yourself to inspire your children.
               </li>

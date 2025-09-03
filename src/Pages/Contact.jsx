@@ -10,7 +10,7 @@ function Contact() {
         <div className="mb-6 text-gray-700 space-y-3 text-lg">
           <p>📍 Address: Dhaka, Bangladesh</p>
           <p>📞 Phone: +6011-26631075</p>
-          <p>✉️ Email: shohansarker346@gmail.com</p>
+          <p>✉️ Email: sarkershohan346@gmail.com</p>
         </div>
 
         <div className="flex justify-center space-x-8 text-blue-600 text-3xl">

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const images = [
   "/Fruits.jpg",
@@ -13,6 +15,8 @@ const images = [
 
 function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [date, setDate] = useState(new Date());
+  const [markedDates, setMarkedDates] = useState([]); // ✅ user marked তারিখ রাখবে
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,15 +35,28 @@ function Home() {
     setCurrentIndex(newIndex);
   };
 
+  // ✅ user যখন তারিখ select করবে
+  const handleDateChange = (selectedDate) => {
+    setDate(selectedDate);
+    const dateString = selectedDate.toDateString();
+
+    // যদি আগে select থাকে → remove করবো, নাহলে add করবো
+    if (markedDates.includes(dateString)) {
+      setMarkedDates(markedDates.filter((d) => d !== dateString));
+    } else {
+      setMarkedDates([...markedDates, dateString]);
+    }
+  };
+
   return (
     <div className="bg-white min-h-screen">
       {/* ✅ Hero Section */}
       <div className="relative bg-[#EAF4F4] pt-16 pb-12 overflow-hidden">
         <div className="text-center max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-            ℋℯ𝒶𝓁𝓉𝒽𝓎 ℰ𝒶𝓉𝒾𝓃ℊ 𝒾𝓃 ℬ𝒶𝓃ℊ𝓁𝒶𝒹ℯ𝓈𝒽
+          <h2 className="text-4xl md:text-6xl font-bold text-gray-800 mb-2">
+            Healthy Eating In Bangladesh
           </h2>
-          <h1 className="text-6xl md:text-7xl font-bold text-pink-500 italic mt-2">
+          <h1 className="text-6xl md:text-7xl font-bold  italic mt-2">
             Delicious!
           </h1>
           <p className="text-gray-600 mt-4">
@@ -66,7 +83,7 @@ function Home() {
       </div>
 
       {/* ✅ Text Content Section */}
-      <div className="bg-gradient-to-b from-[#9ad9db] via-[#e5d8d9] to-[#eb96aa] px-6 py-10 md:py-14 flex justify-center items-center">
+      <div className="bg-gray-200 px-6 py-10 md:py-14 flex justify-center items-center">
         <div className="max-w-6xl grid md:grid-cols-3 gap-6 w-full">
           {/* Column 1 - Main List */}
           <div className="space-y-6 col-span-2">
@@ -118,7 +135,7 @@ function Home() {
           {/* Column 2 - Side Cards */}
           <div className="space-y-6 ">
             {/* Morning */}
-            <div className="bg-yellow-500 text-white p-6 rounded-lg relative">
+            <div className="bg-white text-black p-6 rounded-lg relative">
               <h4 className="text-2xl font-bold">🌅 Morning (Breakfast)</h4>
               <p className="text-xl opacity-80 mt-1">🕗 7:00 AM – 8:00 AM</p>
               <p className="mt-2 text-md text-black opacity-90">
@@ -128,17 +145,17 @@ function Home() {
             </div>
 
             {/* Noon */}
-            <div className="bg-green-600 text-white p-6 rounded-lg">
+            <div className="bg-white text-black p-6 rounded-lg">
               <h4 className="text-2xl font-bold">🌞 Noon (Lunch)</h4>
               <p className="text-xl opacity-80 mt-1">🕛 12:30 PM – 1:30 PM</p>
-              <p className="mt-2 text-md text-white opacity-90">
+              <p className="mt-2 text-md  opacity-90">
                 Rice, vegetables, fish/meat, and lentils. Gives balanced
                 nutrition for growth and strength.
               </p>
             </div>
 
             {/* Afternoon */}
-            <div className="bg-orange-500 text-white p-6 rounded-lg">
+            <div className="bg-white text-black p-6 rounded-lg">
               <h4 className="text-2xl font-bold">🍎 Afternoon Snack</h4>
               <p className="text-xl opacity-80 mt-1">🕒 4:00 PM – 4:30 PM</p>
               <p className="mt-2 text-md opacity-90">
@@ -148,7 +165,7 @@ function Home() {
             </div>
 
             {/* Night */}
-            <div className="bg-indigo-600 text-white p-6 rounded-lg">
+            <div className="bg-white text-black p-6 rounded-lg">
               <h4 className="text-2xl font-bold">🌙 Night (Dinner)</h4>
               <p className="text-xl opacity-80 mt-1">🕗 8:00 PM – 9:00 PM</p>
               <p className="mt-2 text-md opacity-90">
@@ -156,6 +173,93 @@ function Home() {
                 repair and growth during sleep.
               </p>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ✅ Routine Table + Calendar Section */}
+      <div className="bg-white px-6 py-12">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+          {/* Table */}
+          <div className="overflow-x-auto">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">
+              🥗 Daily Food Routine
+            </h2>
+            <table className="min-w-full border border-gray-300 rounded-lg overflow-hidden shadow">
+              <thead className="bg-teal-600 text-white">
+                <tr>
+                  <th className="py-3 px-4 border">Time</th>
+                  <th className="py-3 px-4 border">Meal</th>
+                  <th className="py-3 px-4 border">Menu</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-gray-50">
+                  <td className="py-3 px-4 border">7:00 AM</td>
+                  <td className="py-3 px-4 border">Breakfast</td>
+                  <td className="py-3 px-4 border">
+                    Bread/Rice, Egg, Milk, Fruits
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 border">12:30 PM</td>
+                  <td className="py-3 px-4 border">Lunch</td>
+                  <td className="py-3 px-4 border">
+                    Rice, Vegetables, Fish/Meat, Lentils
+                  </td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="py-3 px-4 border">4:00 PM</td>
+                  <td className="py-3 px-4 border">Snack</td>
+                  <td className="py-3 px-4 border">
+                    Fruits, Light Snacks, Milk
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 border">8:00 PM</td>
+                  <td className="py-3 px-4 border">Dinner</td>
+                  <td className="py-3 px-4 border">
+                    Rice/Roti, Vegetables, Fish/Meat/Egg
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* ✅ Calendar Section with Multiple Marks */}
+          <div>
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">
+              📅 Food Calendar
+            </h2>
+            <Calendar
+              onChange={handleDateChange}
+              value={date}
+              className="rounded-lg border shadow p-2"
+              tileClassName={({ date, view }) => {
+                if (
+                  view === "month" &&
+                  markedDates.includes(date.toDateString())
+                ) {
+                  return "bg-teal-300 text-black rounded-full"; // ✅ highlight style
+                }
+                return null;
+              }}
+            />
+            <p className="mt-4 text-gray-700">
+              Selected Date:{" "}
+              <span className="font-semibold">{date.toDateString()}</span>
+            </p>
+
+            {markedDates.length > 0 && (
+              <div className="mt-4">
+                <h3 className="font-bold">📌 Marked Dates:</h3>
+                <ul className="list-disc list-inside">
+                  {markedDates.map((d, i) => (
+                    <li key={i}>{d}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>
