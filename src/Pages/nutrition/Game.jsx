@@ -190,7 +190,7 @@ function FeedTheMonster({ onBack }) {
     setTimeLeft(30);
     setGameOver(false);
     setMonsterMood("😀");
-    setShowTips(true); // আবার টিপস দেখাবে
+    setShowTips(true);
   };
 
   return (
@@ -276,10 +276,16 @@ function CatchFoodGame({ onBack }) {
     { emoji: "🥦", healthy: true },
     { emoji: "🥕", healthy: true },
     { emoji: "🍉", healthy: true },
+    { emoji: "🍇", healthy: true },
+    { emoji: "🍌", healthy: true },
+    { emoji: "🥑", healthy: true },
+    { emoji: "🌽", healthy: true },
     { emoji: "🍕", healthy: false },
     { emoji: "🍔", healthy: false },
     { emoji: "🍩", healthy: false },
     { emoji: "🥤", healthy: false },
+    { emoji: "🍟", healthy: false },
+    { emoji: "🍫", healthy: false },
 
     // 💣 দুই ধরনের বোমা
     { emoji: "💣", bomb: true },
@@ -291,7 +297,7 @@ function CatchFoodGame({ onBack }) {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
-  // food falling (bomb একটু বেশি ফ্রিকোয়েন্সি তে)
+  // food falling
   useEffect(() => {
     if (gameOver) return;
     const interval = setInterval(() => {
@@ -299,11 +305,9 @@ function CatchFoodGame({ onBack }) {
       const chance = Math.random();
 
       if (chance < 0.28) {
-        // 35% chance → bomb আসবে
         const bombs = foods.filter((f) => f.bomb);
         randomFood = bombs[Math.floor(Math.random() * bombs.length)];
       } else {
-        // অন্য সময় normal food
         const others = foods.filter((f) => !f.bomb);
         randomFood = others[Math.floor(Math.random() * others.length)];
       }
@@ -312,7 +316,7 @@ function CatchFoodGame({ onBack }) {
         ...prev,
         { id: Date.now(), ...randomFood, left: Math.random() * 80, top: 0 },
       ]);
-    }, 1000); // একটু ফাস্ট করা হলো
+    }, 1000);
     return () => clearInterval(interval);
   }, [gameOver]);
 
@@ -333,7 +337,7 @@ function CatchFoodGame({ onBack }) {
       if (f.top > 80 && f.top < 90) {
         if (Math.abs(f.left - basketPos) < 10) {
           if (f.bomb) {
-            setGameOver(true); // bomb ধরলেই শেষ
+            setGameOver(true);
           } else if (f.healthy) {
             setScore((s) => s + 10);
           } else {
@@ -351,7 +355,7 @@ function CatchFoodGame({ onBack }) {
     setGameOver(false);
   };
 
-  // handle mobile tap
+  // mobile touch control
   const handleTouch = (e) => {
     const screenWidth = window.innerWidth;
     const touchX = e.touches[0].clientX;
@@ -362,10 +366,22 @@ function CatchFoodGame({ onBack }) {
     }
   };
 
+  // desktop mouse click control
+  const handleClick = (e) => {
+    const screenWidth = window.innerWidth;
+    const clickX = e.clientX;
+    if (clickX < screenWidth / 2) {
+      setBasketPos((p) => Math.max(5, p - 10));
+    } else {
+      setBasketPos((p) => Math.min(95, p + 10));
+    }
+  };
+
   return (
     <div
       className="relative w-full max-w-md h-[500px] bg-blue-100 rounded-lg overflow-hidden flex flex-col items-center justify-center"
       onTouchStart={handleTouch}
+      onClick={handleClick} // ✅ Desktop এ click কাজ করবে
     >
       <button
         onClick={onBack}
@@ -374,7 +390,7 @@ function CatchFoodGame({ onBack }) {
         ⬅️ Back
       </button>
 
-      <h2 className="absolute top-2 text-xl font-bold text-pink-700 left-1/2 -translate-x-1/2">
+      <h2 className="absolute top-2 text-sm md:text-lg font-bold text-pink-700 left-1/2 -translate-x-1/2">
         🍎 Catch the Healthy Food!
       </h2>
       <p className="absolute top-10 text-lg font-semibold">Score: {score}</p>
